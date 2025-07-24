@@ -1,4 +1,6 @@
-/* Passes requests through handlers until one handle it. You need loosely coupled processing steps */
+/* Passes requests through handlers until one handle it. 
+  Use this if You need loosely coupled processing steps 
+*/
 
 abstract class Handler<T = any, R = void> {
   next: Handler | undefined

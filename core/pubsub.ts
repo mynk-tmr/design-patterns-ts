@@ -1,5 +1,5 @@
 /**
- * Observer pattern lets you subscribe to events in one object and react in real time.
+ * PubSub pattern lets you subscribe to events in one object and react in real time.
  * It's not same as Mediator pattern, where logic is centralized in one object.
  * Here, each subscriber can react independently to events.
  */

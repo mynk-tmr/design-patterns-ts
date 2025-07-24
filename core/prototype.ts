@@ -4,7 +4,7 @@
  * - object creation needs costly API calls
  *
  * Prototype Registry provides an easy way to access frequently-used prototypes.
- * It stores a set of pre-built objects that are ready to be copied.
+ * See examples/playlist-proto-registry.ts for usage.
  */
 interface Clonable<T> {
   clone(): T

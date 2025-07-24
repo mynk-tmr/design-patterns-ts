@@ -60,8 +60,7 @@ function main() {
   phone.putOnMute()
   phone.onIncomingCall() // Vibrating ....
 
-  phone.putOnMute()
-  phone.onIncomingCall() // Vibrating ....
+  phone.putOnMute() // Already in silent mode.
 }
 
 main()

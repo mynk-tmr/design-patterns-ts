@@ -9,6 +9,9 @@ abstract class Media implements Clonable<Media> {
     public duration: number
   ) {}
   abstract clone(): Media
+  describe(): string {
+    return `${this.title} (${this.duration} seconds)`
+  }
 }
 
 // 🎵 Concrete Prototype
@@ -67,22 +70,20 @@ function main() {
   // 🧪 Usage Example
   const registry = new PrototypeRegistry<Media>()
 
-  const chillTrack = new Track('Rain Sounds', 180, 'Ambient Collective')
-  const upbeatTrack = new Track('Sunny Day', 240, 'Pop Inc.')
-
-  const chillPlaylist = new Playlist('Chill Vibes')
-  chillPlaylist.addTrack(chillTrack)
-  chillPlaylist.addTrack(upbeatTrack)
+  const chillPlaylist = new Playlist('Chill Vibes Playlist')
+  chillPlaylist.addTrack(new Track('Calm Waves', 300, 'Ocean Sounds'))
+  chillPlaylist.addTrack(new Track('Gentle Breeze', 240, 'Nature Beats'))
 
   // 📌 Register prototypes
-  registry.register('chillTrack', chillTrack)
   registry.register('chillPlaylist', chillPlaylist)
+  registry.register('upbeatTrack', new Track('Upbeat Tune', 180, 'DJ Beats'))
 
   // 🔁 Clone from registry
-  const clonedTrack = registry.clone('chillTrack')
+  const clonedTrack = registry.clone('upbeatTrack')
   const clonedPlaylist = registry.clone('chillPlaylist')
 
-  console.log(clonedTrack)
-  console.log(clonedPlaylist)
+  console.log(clonedTrack?.describe())
+  console.log(clonedPlaylist?.describe())
+  console.log('Available prototypes:', registry.list())
 }
 main()

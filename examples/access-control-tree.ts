@@ -1,3 +1,7 @@
+/**
+ * Composite Pattern Example: Access Control Tree
+ */
+
 interface IPermission {
   allowed(perk: string): boolean
 }
@@ -31,13 +35,13 @@ class Role implements IRole {
   }
   listPerks(): string[] {
     const perks = new Set<string>()
-    for (const ch of this.children) {
-      if (ch instanceof Perk) perks.add(ch.name)
-      else if (ch instanceof Role) {
-        for (const p of ch.listPerks()) perks.add(p)
-      }
-    }
+    Role.fillPerks(this, perks)
     return Array.from(perks)
+  }
+  protected static fillPerks(ch: IPermission, perks: Set<string>): void {
+    if (ch instanceof Perk) perks.add(ch.name)
+    else if (ch instanceof Role)
+      ch.children.forEach((child) => Role.fillPerks(child, perks))
   }
 }
 

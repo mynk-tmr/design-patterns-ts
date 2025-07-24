@@ -42,6 +42,19 @@ class RunThis<T> extends Context<T> {
 
 function client() {
   const context = new RunThis<string>(new ArrayStrategy())
+  const data = getData()
+  const filter = getFilter()
+  const result = context.diff(data, filter)
+  console.log(result)
+  context.changeStrategy(new SetStrategy())
+  const result2 = context.diff(data, filter)
+  console.log(result2)
+}
+
+client()
+
+//data
+function getData() {
   const data = [
     'apple',
     'banana',
@@ -159,6 +172,10 @@ function client() {
     'elephant',
     'fox'
   ]
+  return data
+}
+
+function getFilter() {
   const filter = [
     'banana',
     'date',
@@ -183,11 +200,5 @@ function client() {
     'camel',
     'cat'
   ]
-  const result = context.diff(data, filter)
-  console.log(result)
-  context.changeStrategy(new SetStrategy())
-  const result2 = context.diff(data, filter)
-  console.log(result2)
+  return filter
 }
-
-client()

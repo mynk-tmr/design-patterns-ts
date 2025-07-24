@@ -38,15 +38,14 @@ function main() {
     console.log(`User logged out: ${data.username} at ${data.timestamp}`)
   })
 
-  bus.publish('user:login', { username: 'john_doe' })
+  bus.publish('user:login', { username: 'mayank' })
+  unsubscribeLogin()
+  bus.publish('user:login', { username: 'alicent' }) // No output, as the callback is unsubscribed
+
   console.log('Waiting for user logout...')
   setTimeout(() => {
-    bus.publish('user:logout', { username: 'john_doe', timestamp: new Date() })
+    bus.publish('user:logout', { username: 'mayank', timestamp: new Date() })
   }, 3000)
-
-  unsubscribeLogin()
-
-  bus.publish('user:login', { username: 'jane_doe' }) // No output, as the callback is unsubscribed
 }
 
 main()
