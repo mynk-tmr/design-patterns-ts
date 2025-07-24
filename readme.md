@@ -1,6 +1,6 @@
 # 🎯 TypeScript Design Patterns, Data Structures & Algorithms
 
-This repository showcases concise, real-world implementations of common **design patterns**, classic **data structures**, and fundamental **algorithms** using modern **TypeScript**. The goal is to explore clean architecture, expressive modeling, and practical problem-solving—focusing on semantic rigor and developer ergonomics.
+This repository showcases concise implementations of common **design patterns**, classic **data structures**, and fundamental **algorithms** using modern **TypeScript**. The goal is to explore clean architecture, expressive modeling, and practical problem-solving.
 
 ## 🚀 What's Inside?
 
@@ -28,7 +28,9 @@ This repository showcases concise, real-world implementations of common **design
 
 - TypeScript 5.0+
 - Functional and OOP styles
-- Node.js (for running examples)
+- Bun (as runtime and package manager)
+- TSX (for TS5 decorators)
+- Vscode IDE and extensions - _prettier_, _oxclint_ and _emojisense_.
 
 ## 📚 Purpose & Philosophy
 
@@ -43,8 +45,6 @@ This project is built to:
 Pull requests are welcome! All contributions that improve clarity and correctness are appreciated.
 
 ## 🧭 How to Run
-
-Clone the repo. This project uses **Bun** as runtime and package manager. **Tsx** is used for @decorators support. Recommended VScode extensions - _prettier_, _oxclint_ and _emojisense_.
 
 ```bash
 git clone https://github.com/mynk-tmr/design-patterns-ts
