@@ -1,3 +1,8 @@
-import config from 'file:///C:/Users/tomar/.vscode/prettierrc.js'
-
-export default config
+export default {
+  bracketSameLine: false,
+  jsxSingleQuote: true,
+  singleQuote: true,
+  trailingComma: 'none',
+  objectWrap: 'collapse',
+  semi: false
+}

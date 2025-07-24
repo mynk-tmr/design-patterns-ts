@@ -1,1 +1,4 @@
-{ "codium.codeCompletion.enable": true }
+{
+  "codium.codeCompletion.enable": true,
+  "prettier.configPath": ".prettierrc.js"
+}
