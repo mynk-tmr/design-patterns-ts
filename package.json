@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "format": "bunx prettier --write ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
