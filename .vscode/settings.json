@@ -1,4 +1,7 @@
 {
-  "material-icon-theme.folders.associations": { "core": "views" },
+  "material-icon-theme.folders.associations": {
+    "core": "views",
+    "impl": "helper"
+  },
   "biome.enabled": false
 }

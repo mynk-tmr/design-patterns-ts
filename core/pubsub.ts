@@ -7,39 +7,41 @@
  */
 
 interface Subscriber {
-  update(event: string, data: any): void
+  update<T extends keyof EventMap>(event: T, data: EventMap[T]): void
 }
 
+type EventMap = { order: string; changePhone: string }
+
 interface Publisher {
-  subscribe(event: string, subscriber: Subscriber): void
-  unsubscribe(event: string, subscriber: Subscriber): boolean
-  notify(event: string, data: any): void
+  subscribe(event: keyof EventMap, subscriber: Subscriber): void
+  unsubscribe(event: keyof EventMap, subscriber: Subscriber): boolean
+  notify: Subscriber['update']
 }
 
 class Email implements Subscriber {
   constructor(public email: string) {}
-  update(event: string, data: any): void {
+  update<T extends keyof EventMap>(event: T, data: EventMap[T]): void {
     console.log(`Sent email to ${this.email} / ${event} / ${data}`)
   }
 }
 
 class SMS implements Subscriber {
   constructor(public phone: string) {}
-  update(event: string, data: any): void {
+  update<T extends keyof EventMap>(event: T, data: EventMap[T]): void {
     console.log(`Sent SMS to ${this.phone} / ${event} / ${data}`)
   }
 }
 
 class Turso implements Publisher {
-  private subs = new Map<string, Set<Subscriber>>()
-  subscribe(event: string, subscriber: Subscriber): void {
+  private subs = new Map<keyof EventMap, Set<Subscriber>>()
+  subscribe(event: keyof EventMap, subscriber: Subscriber): void {
     if (!this.subs.has(event)) this.subs.set(event, new Set())
     this.subs.get(event)?.add(subscriber)
   }
-  unsubscribe(event: string, subscriber: Subscriber): boolean {
+  unsubscribe(event: keyof EventMap, subscriber: Subscriber): boolean {
     return this.subs.get(event)?.delete(subscriber) || false
   }
-  notify(event: string, data: any): void {
+  notify<T extends keyof EventMap>(event: T, data: EventMap[T]): void {
     this.subs.get(event)?.forEach((sub) => sub.update(event, data))
   }
 }
