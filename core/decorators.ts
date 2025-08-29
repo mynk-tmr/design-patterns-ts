@@ -29,7 +29,7 @@ function withPrint(Base: typeof Demo) {
 
 function withLog<O, T, R>(method: (this: O, ...args: T[]) => R): typeof method {
   return function (...args) {
-    console.log(`Called ${method.name} with ${args}`)
+    console.log(`[LOG] Called ${method.name} with ${args}`)
     return method.apply(this, args)
   }
 }
